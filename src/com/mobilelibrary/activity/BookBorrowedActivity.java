@@ -32,7 +32,6 @@ public class BookBorrowedActivity extends BaseActivity{
 			
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
 				BookBorrowedActivity.this.finish();
 			}
 		});
