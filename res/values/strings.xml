@@ -2,7 +2,7 @@
 <resources>
 
     <string name="hello">Hello World, MobileLibraryActivity!</string>
-    <string name="app_name">MobileLibrary</string>
+    <string name="app_name">移动图书馆</string>
     
     <!-- title and tag -->
     <string name="main_page">首页</string>
@@ -28,7 +28,7 @@
     
     <!-- Common info -->
     <string name="version">版本号：1.0</string>
-    <string name="member">组员：唐韧 于永江 朱珣 张敬伟 刘瑞东 高明辉</string>
+    <string name="member">组员：唐韧 于永江 朱珣 张敬伟 刘瑞东</string>
     <string name="confirm">确定</string>
     <string name="cancel">取消</string>
     <string name="promotion">提示</string>
@@ -39,15 +39,11 @@
     <!-- 个人信息 -->
     <string name="mainpage_personal_information">个人信息</string>
     
-
-    
     <!-- 已借书目 -->
     <string name="mainpage_borrowed_books">已借书目</string>
     
-    
     <!-- 借书记录 -->
     <string name="mainpage_book_records">借书记录</string>
-    
     
     
     <!-- 加载新书推荐的进度条 -->
@@ -62,7 +58,7 @@
     
     
     <!-- 图书搜索框中的hint-->
-    <string name="search_book_key_hint">图书标题</string>
+    <string name="search_book_key_hint">输入书名查询</string>
     
     
     <!-- 显示没有更多的书目查询结果-->

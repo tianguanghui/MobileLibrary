@@ -2,26 +2,21 @@ package com.mobilelibrary.activity;
 
 import java.util.ArrayList;
 
-import org.json.JSONException;
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.ViewFlipper;
-import android.widget.AdapterView.OnItemClickListener;
 
 import com.mobilelibrary.R;
 import com.mobilelibrary.adapter.BookBorrowedAdapter;
-import com.mobilelibrary.adapter.BookSearchAdapter;
 import com.mobilelibrary.common.LoadingDialog;
-import com.mobilelibrary.common.MobilelibraryResourceFromJSONRequest;
 import com.mobilelibrary.dao.BorrowedBookDAO;
 import com.mobilelibrary.entity.BookBorrowedEntity;
-import com.mobilelibrary.entity.BookSearchEntity;
-import com.mobilelibrary.handlerexception.WSError;
 
 public class BookBorrowedActivity extends BaseActivity{
 	
@@ -33,6 +28,14 @@ public class BookBorrowedActivity extends BaseActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.borrowed_book);
 		setTopTitle(this,R.string.my_borrowedbook);
+		setBackButton(this, new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				BookBorrowedActivity.this.finish();
+			}
+		});
 		
 		mViewFlipper = (ViewFlipper)findViewById(R.id.ViewFlipper);
 		
@@ -84,22 +87,22 @@ public class BookBorrowedActivity extends BaseActivity{
 		private void bookSearch(){
 			
 			BorrowedBookDAO  borrowedBookDAO = new BorrowedBookDAO(BookBorrowedActivity.this);
-			//ÏÂÃæµÄ´úÂë½öÓÃÀ´²âÊÔ
+			//ï¿½ï¿½ï¿½ï¿½Ä´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			BookBorrowedEntity testBookBorrowedEntity = new BookBorrowedEntity();
 			testBookBorrowedEntity.setBookId("1");
-			testBookBorrowedEntity.setBookText("Êý¾Ý½á¹¹");
-			testBookBorrowedEntity.setBookImageUrl("Êý¾Ý½á¹¹");
-			testBookBorrowedEntity.setBookPress("Êý¾Ý½á¹¹");
-			testBookBorrowedEntity.setBookPressTime("Êý¾Ý½á¹¹");
+			testBookBorrowedEntity.setBookText("ï¿½ï¿½Ý½á¹¹");
+			testBookBorrowedEntity.setBookImageUrl("ï¿½ï¿½Ý½á¹¹");
+			testBookBorrowedEntity.setBookPress("ï¿½ï¿½Ý½á¹¹");
+			testBookBorrowedEntity.setBookPressTime("ï¿½ï¿½Ý½á¹¹");
 			BookBorrowedEntity testBookBorrowedEntity1 = new BookBorrowedEntity();
 			testBookBorrowedEntity1.setBookId("1");
-			testBookBorrowedEntity1.setBookText("Êý¾Ý½á¹¹");
-			testBookBorrowedEntity1.setBookImageUrl("Êý¾Ý½á¹¹");
-			testBookBorrowedEntity1.setBookPress("Êý¾Ý½á¹¹");
-			testBookBorrowedEntity1.setBookPressTime("Êý¾Ý½á¹¹");
+			testBookBorrowedEntity1.setBookText("ï¿½ï¿½Ý½á¹¹");
+			testBookBorrowedEntity1.setBookImageUrl("ï¿½ï¿½Ý½á¹¹");
+			testBookBorrowedEntity1.setBookPress("ï¿½ï¿½Ý½á¹¹");
+			testBookBorrowedEntity1.setBookPressTime("ï¿½ï¿½Ý½á¹¹");
 			borrowedBookDAO.insert(testBookBorrowedEntity);
 			borrowedBookDAO.insert(testBookBorrowedEntity1);
-			//ÉÏÃæµÄ´úÂë½öÓÃÀ´²âÊÔ
+			//ï¿½ï¿½ï¿½ï¿½Ä´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			ArrayList<BookBorrowedEntity> books = null;
 			books = borrowedBookDAO.query(null, null ,null,null);
 			BookBorrowedAdapter bookAdapter = new BookBorrowedAdapter(BookBorrowedActivity.this); 
@@ -121,7 +124,7 @@ public class BookBorrowedActivity extends BaseActivity{
 		@Override
 		public void onItemClick(AdapterView<?> adapterView, View view, int position,
 				long time) {
-			//Ìø´«µ½¸ÃÊéµÄÐÅÏ¢Ò³
+			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢Ò³
 		}
 
 	};

@@ -14,7 +14,6 @@ import android.database.Cursor;
  */
 public class BorrowedBookDAO extends BaseDAO {
 	
-	
 	public String getBookName() {
 		return bookName;
 	}
@@ -70,6 +69,7 @@ public class BorrowedBookDAO extends BaseDAO {
 		.append("book_author text,")
 		.append("book_press text,")
 		.append("book_press_time text);");
+		
 		return sql_borrowed_books.toString();
 	}
 
@@ -136,7 +136,6 @@ public class BorrowedBookDAO extends BaseDAO {
 		do {
 
 			entity = new BookBorrowedEntity();
-
 			
 			entity.setBookId(cursor.getString(cursor.getColumnIndex(bookId)));
 			entity.setBookText(cursor.getString(cursor.getColumnIndex(bookName)));
@@ -144,7 +143,6 @@ public class BorrowedBookDAO extends BaseDAO {
 			entity.setBookAuthor(cursor.getString(cursor.getColumnIndex(bookAuthor)));
 			entity.setBookPress(cursor.getString(cursor.getColumnIndex(bookPress)));
 			entity.setBookPressTime(cursor.getString(cursor.getColumnIndex(bookPressTime)));
-
 						
 			arrayList.add(entity);
 			
