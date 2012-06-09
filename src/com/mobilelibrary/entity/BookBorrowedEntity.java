@@ -1,6 +1,8 @@
 package com.mobilelibrary.entity;
 
-public class BookBorrowedEntity extends BookEntity{
+import java.io.Serializable;
+
+public class BookBorrowedEntity extends BookEntity implements Serializable{
 	
 	
 	public String getBookAuthor() {

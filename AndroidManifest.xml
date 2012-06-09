@@ -43,6 +43,8 @@
         
         <activity android:name=".activity.ModiPwdActivity" />
         
+        <activity android:name=".activity.BookBorrowRecordActivity" />
+        
         <activity android:name=".activity.AboutActivity" />
         
         <activity android:name=".activity.BookShelfActivity" />

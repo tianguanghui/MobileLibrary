@@ -15,26 +15,27 @@ import android.widget.ViewFlipper;
 
 import com.mobilelibrary.R;
 import com.mobilelibrary.adapter.BookBorrowedAdapter;
+import com.mobilelibrary.adapter.BookBorrowedRecordAdapter;
 import com.mobilelibrary.common.LoadingDialog;
 import com.mobilelibrary.dao.BorrowedBookDAO;
 import com.mobilelibrary.entity.BookBorrowedEntity;
 
-public class BookBorrowedActivity extends BaseActivity{
+public class BookBorrowRecordActivity extends BaseActivity{
 	
     private ViewFlipper mViewFlipper;
+    ArrayList<BookBorrowedEntity> books = null;
 	private ListView mBorrowedListView;
-	ArrayList<BookBorrowedEntity> books = null;
-	
+
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.borrowed_book);
-		setTopTitle(this,R.string.my_borrowedbook);
+        setContentView(R.layout.borrowed_book_record);
+		setTopTitle(this,R.string.mainpage_book_records);
 		setBackButton(this, new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
-				BookBorrowedActivity.this.finish();
+				BookBorrowRecordActivity.this.finish();
 			}
 		});
 		
@@ -42,7 +43,7 @@ public class BookBorrowedActivity extends BaseActivity{
 		
 		mBorrowedListView = (ListView)findViewById(R.id.borrowedListView);
 		
-		new NewTaskGetBorrowedBookFromDB(BookBorrowedActivity.this,
+		new NewTaskGetBorrowedBookFromDB(BookBorrowRecordActivity.this,
 				R.string.wait_msg,
 				R.string.wait_msg).execute((Void)null);	
 		//if  borrowed book is null
@@ -85,9 +86,9 @@ public class BookBorrowedActivity extends BaseActivity{
 		
 		}
 
-		private void bookSearch(){
+private void bookSearch(){
 			
-			BorrowedBookDAO  borrowedBookDAO = new BorrowedBookDAO(BookBorrowedActivity.this);
+			BorrowedBookDAO  borrowedBookDAO = new BorrowedBookDAO(BookBorrowRecordActivity.this);
 			//锟斤拷锟斤拷拇锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷
 			BookBorrowedEntity testBookBorrowedEntity = new BookBorrowedEntity();
 			testBookBorrowedEntity.setBookId("1");
@@ -115,7 +116,7 @@ public class BookBorrowedActivity extends BaseActivity{
 			books.add(testBookBorrowedEntity1);
 			books.add(testBookBorrowedEntity2);
 //			books = borrowedBookDAO.query(null, null ,null,null);
-			BookBorrowedAdapter bookAdapter = new BookBorrowedAdapter(BookBorrowedActivity.this); 
+			BookBorrowedRecordAdapter bookAdapter = new BookBorrowedRecordAdapter(BookBorrowRecordActivity.this); 
 			bookAdapter.setList(books);
 			bookAdapter.setListView(mBorrowedListView);
 			mAdapter = bookAdapter;
@@ -123,6 +124,10 @@ public class BookBorrowedActivity extends BaseActivity{
 		
 		}
 
+
+
+
+		
 	}
 	
 	//borrowed book Listener
@@ -131,7 +136,7 @@ public class BookBorrowedActivity extends BaseActivity{
 		@Override
 		public void onItemClick(AdapterView<?> adapterView, View view, int position,
 				long time) {
-			Intent   book_info_intent = new Intent(BookBorrowedActivity.this, BookInfoActivity.class);
+			Intent   book_info_intent = new Intent(BookBorrowRecordActivity.this, BookInfoActivity.class);
 			book_info_intent.putExtra("bookinfo", position+1);
 			startActivity(book_info_intent);
 		}

@@ -44,6 +44,7 @@ public class BookShelfActivity extends BaseActivity {
     private AdapterView.OnItemClickListener mGridItemClickListener = new AdapterView.OnItemClickListener() {
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 			Intent   book_info_intent = new Intent(BookShelfActivity.this, BookInfoActivity.class);
+			book_info_intent.putExtra("bookinfo", position+1);
 			startActivity(book_info_intent);
         }
     };

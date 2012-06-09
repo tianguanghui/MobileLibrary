@@ -16,6 +16,7 @@ public class MainPageActivity extends BaseActivity {
 	private Button btn_my_shelf;
 	private Button btn_personal_information;
 	private Button btn_book_borrowed;
+	private Button btn_borrow_record;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -24,24 +25,31 @@ public class MainPageActivity extends BaseActivity {
 		
 		setTopTitle(this,R.string.my_library);
 		
-		//ÎÒµÄÊé¼Ü
+		//ï¿½Òµï¿½ï¿½ï¿½ï¿½
 		btn_my_shelf = (Button)findViewById(R.id.btn_my_shelf);
 		
 		btn_my_shelf.setOnClickListener(mBookShelfListener);
 		
-		//¸öÈËÐÅÏ¢
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 		btn_personal_information = (Button)findViewById(R.id.btn_personal_information);
 
 		btn_personal_information.setOnClickListener(mPersonInfomationListener);
 		
-		//ÒÑ½èÊéÄ¿
+		//ï¿½Ñ½ï¿½ï¿½ï¿½Ä¿
 		btn_book_borrowed = (Button)findViewById(R.id.btn_book_borrowed);
 		btn_book_borrowed.setOnClickListener(mBookBorrowedListener);
 		
-		//½èÊé¼ÇÂ¼
-		btn_book_borrowed = (Button)findViewById(R.id.btn_book_borrowed);
-		btn_book_borrowed.setOnClickListener(mBookBorrowedListener);
-
+		
+		btn_borrow_record = (Button) this.findViewById(R.id.btn_book_records);
+		btn_borrow_record.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent person_information_intent = new Intent(MainPageActivity.this,BookBorrowRecordActivity.class);
+				startActivity(person_information_intent);
+			}
+		});
 	}
 
 	@Override
@@ -62,7 +70,7 @@ public class MainPageActivity extends BaseActivity {
 		super.onStop();
 	}
 	
-	//ÎÒµÄÊé¼Ü°´Å¥¼àÌýÆ÷
+	//ï¿½Òµï¿½ï¿½ï¿½Ü°ï¿½Å¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	private OnClickListener  mBookShelfListener = new OnClickListener() {
 		
 		@Override
@@ -73,7 +81,7 @@ public class MainPageActivity extends BaseActivity {
 		}
 	};
 	
-	//¸öÈËÐÅÏ¢°´Å¥¼àÌýÆ÷
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½Å¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	private OnClickListener  mPersonInfomationListener = new OnClickListener() {
 		
 		@Override

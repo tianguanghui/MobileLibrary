@@ -93,7 +93,17 @@ public class BooksAdapter extends CursorAdapter {
 //        holder.title.setCompoundDrawablesWithIntrinsicBounds(null, null, null,
 //                    ImageUtilities.getCachedCover(bookId, mDefaultCover));
         Resources res = context.getResources();
-        Bitmap bmp=BitmapFactory.decodeResource(res, R.drawable.book_recommend_default);
+        Bitmap bmp = null;
+        if (bookId.equals("1")) {
+        	 bmp=BitmapFactory.decodeResource(res, R.drawable.book_recommend_default);
+		}
+        if (bookId.equals("2")) {
+        	 bmp=BitmapFactory.decodeResource(res, R.drawable.book6);
+		}
+        if (bookId.equals("3")) {
+        	 bmp=BitmapFactory.decodeResource(res, R.drawable.book2);
+		}
+        
         Matrix matrix = new Matrix();
         matrix.postScale(0.7f,0.7f); 
         Bitmap resizeBmp = bmp.createBitmap(bmp,0,0,bmp.getWidth(),bmp.getHeight(),matrix,true);

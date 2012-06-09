@@ -5,10 +5,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -26,6 +28,7 @@ public class OtherActivity extends BaseActivity implements OnItemClickListener{
 	private static final int FEEDBACK = 2;
 	
 	private ListView otherListView;
+	private Button logoutButton;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +36,16 @@ public class OtherActivity extends BaseActivity implements OnItemClickListener{
 		setContentView(R.layout.other);
 		
 		setTopTitle(this,R.string.other);
+		
+		logoutButton = (Button) this.findViewById(R.id.btn_quit);
+		logoutButton.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 		
 		otherListView = (ListView) this.findViewById(R.id.lv_other);
 		otherListView.setOnItemClickListener(this);

@@ -16,9 +16,9 @@ import com.mobilelibrary.common.ImageManager;
 import com.mobilelibrary.entity.BookBorrowedEntity;
 import com.mobilelibrary.entity.BookRecommendEntity;
 
-public class BookBorrowedAdapter extends ArrayListAdapter<BookBorrowedEntity>{
+public class BookBorrowedRecordAdapter extends ArrayListAdapter<BookBorrowedEntity>{
 
-	public BookBorrowedAdapter(Activity context) {
+	public BookBorrowedRecordAdapter(Activity context) {
 		super(context);
 		// TODO Auto-generated constructor stub
 	}
@@ -33,7 +33,7 @@ public class BookBorrowedAdapter extends ArrayListAdapter<BookBorrowedEntity>{
 
 		if (row==null) {
 			LayoutInflater inflater = mContext.getLayoutInflater();
-			row=inflater.inflate(R.layout.book_borrowed_item, null);
+			row=inflater.inflate(R.layout.book_borrowed_record_item, null);
 
 			holder = new ViewHolder();
 			holder.bookImage = (ImageView)row.findViewById(R.id.book_borrowed_imageview);
