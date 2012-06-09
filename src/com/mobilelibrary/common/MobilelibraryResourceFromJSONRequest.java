@@ -1,17 +1,20 @@
 package com.mobilelibrary.common;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import com.mobilelibrary.entity.BookRecommendEntity;
 import com.mobilelibrary.entity.BookSearchEntity;
 import com.mobilelibrary.entity.UserEntity;
 import com.mobilelibrary.handlerexception.WSError;
+import com.mobilelibrary.net.HttpRequest;
+import com.mobilelibrary.parse.PersonInformationParser;
 
 /*
- * Õâ¸öÀàÓÃÀ´·â×°JSONÇëÇó¼°µÃµ½ÏìÓ¦×ÊÔ´
+ * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×°JSONï¿½ï¿½ï¿½ó¼°µÃµï¿½ï¿½ï¿½Ó¦ï¿½ï¿½Ô´
  */
 public class MobilelibraryResourceFromJSONRequest  {
 	
@@ -20,53 +23,101 @@ public class MobilelibraryResourceFromJSONRequest  {
 	public UserEntity loginAuthentication(String userID ,String password) throws JSONException, WSError{
 		// TODO Auto-generated method stub
 		
-		//ÏÂÃæµÄ´úÂëÄ¿Ç°Ö»ÊÇÓÃÀ´²âÊÔ
-		UserEntity userEntity = new UserEntity();
-		userEntity.setUserName("LYC");
-		userEntity.setUserId("LYC");
-		//ÉÏÃæµÄ´úÂëÖ»ÊÇÓÃÀ´²âÊÔ
+		//generate JSON object
+		JSONObject param = new JSONObject();
+		param.put("userId", userID);
+		param.put("password", password);
+
+		InputStream   inputStream  = HttpRequest.requestByXML("url",param.toString());
+		
+		//		UserEntity  userEntity = (UserEntity)new PersonInformationParser().executeToObject(inputStream, null);
+
+		//test
+		UserEntity  userEntity = (UserEntity)new PersonInformationParser().executeToObject(new ByteArrayInputStream(param.toString().getBytes()), null);
 		
 		return userEntity;
 	}
     
-	//´Ë·½·¨ÓÃÀ´»ñÈ¡ÍÆ¼öµÄĞÂÊé
+	//ï¿½Ë·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡ï¿½Æ¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public BookRecommendEntity[] getBooksRecommend() throws JSONException, WSError{
 		// TODO Auto-generated method stub
 		
-		//ÏÂÃæµÄ´úÂëÄ¿Ç°Ö»ÊÇÓÃÀ´²âÊÔ
+		//ï¿½ï¿½ï¿½ï¿½Ä´ï¿½ï¿½ï¿½Ä¿Ç°Ö»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		BookRecommendEntity[] books = new BookRecommendEntity[5];
-		
+		BookRecommendEntity  book = null;
 		for (int i = 0; i < 5; i++) {
 			
-			BookRecommendEntity  book = new BookRecommendEntity();
-			book.setBookImageUrl("aa");
-			book.setBookText("Êı¾İ½á¹¹");
+			if (i == 0) {
+				book = new BookRecommendEntity();
+				book.setBookImageUrl("aa");
+				book.setBookText("Androidå¼€å‘å®è·µ");
+			}
+			if (i == 1) {
+				book = new BookRecommendEntity();
+				book.setBookImageUrl("aa");
+				book.setBookText("JaveEE 5");
+			}
+			if (i == 2) {
+				book = new BookRecommendEntity();
+				book.setBookImageUrl("aa");
+				book.setBookText("æ•°æ®ç»“æ„ä¸ç®—æ³•");
+			}
+			if (i == 3) {
+				book = new BookRecommendEntity();
+				book.setBookImageUrl("aa");
+				book.setBookText("JavaEEå…¥é—¨åˆ°ç²¾é€š");
+			}
+			if (i == 4) {
+				book = new BookRecommendEntity();
+				book.setBookImageUrl("aa");
+				book.setBookText("Androidå®è·µä¸æé«˜");
+			}
 			books[i]=book;
 			
 		}
-		//ÉÏÃæµÄ´úÂëÖ»ÊÇÓÃÀ´²âÊÔ
+		//ï¿½ï¿½ï¿½ï¿½Ä´ï¿½ï¿½ï¿½Ö»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		
 		
 		return books;
 	}
 	
-	//´Ë·½·¨ÓÃÀ´»ñÈ¡ËÑË÷µ½µÄĞÂÊé
+	//ï¿½Ë·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public BookSearchEntity[] getBooksSearch(String query) throws JSONException, WSError{
 		// TODO Auto-generated method stub
 		
-		//ÏÂÃæµÄ´úÂëÄ¿Ç°Ö»ÊÇÓÃÀ´²âÊÔ
+		//ï¿½ï¿½ï¿½ï¿½Ä´ï¿½ï¿½ï¿½Ä¿Ç°Ö»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		BookSearchEntity[] books = new BookSearchEntity[5];
+		BookSearchEntity  book = null;
 		
 		for (int i = 0; i < 5; i++) {
 			
-			BookSearchEntity  book = new BookSearchEntity();
-			book.setBookImageUrl("aa");
-			book.setBookText("Êı¾İ½á¹¹");
+			if (i == 0) {
+				book = new BookSearchEntity();
+				book.setBookImageUrl("aa");
+				book.setBookText("Androidå¼€å‘å®è·µ");
+			}
+			if (i == 1) {
+				book = new BookSearchEntity();
+				book.setBookImageUrl("aa");
+				book.setBookText("JaveEE 5");
+			}
+			if (i == 2) {
+				book = new BookSearchEntity();
+				book.setBookImageUrl("aa");
+				book.setBookText("æ•°æ®ç»“æ„ä¸ç®—æ³•");
+			}
+			if (i == 3) {
+				book = new BookSearchEntity();
+				book.setBookImageUrl("aa");
+				book.setBookText("JavaEEå…¥é—¨åˆ°ç²¾é€š");
+			}
+			if (i == 4) {
+				book = new BookSearchEntity();
+				book.setBookImageUrl("aa");
+				book.setBookText("Androidå®è·µä¸æé«˜");
+			}
 			books[i]=book;
-			
 		}
-		//ÉÏÃæµÄ´úÂëÖ»ÊÇÓÃÀ´²âÊÔ
-		
 		
 		return books;
 	}

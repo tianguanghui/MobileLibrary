@@ -3,6 +3,7 @@ package com.mobilelibrary.activity;
 import java.util.ArrayList;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -86,22 +87,21 @@ public class BookBorrowedActivity extends BaseActivity{
 		private void bookSearch(){
 			
 			BorrowedBookDAO  borrowedBookDAO = new BorrowedBookDAO(BookBorrowedActivity.this);
-			//����Ĵ������������
+			//锟斤拷锟斤拷拇锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷
 			BookBorrowedEntity testBookBorrowedEntity = new BookBorrowedEntity();
 			testBookBorrowedEntity.setBookId("1");
-			testBookBorrowedEntity.setBookText("��ݽṹ");
-			testBookBorrowedEntity.setBookImageUrl("��ݽṹ");
-			testBookBorrowedEntity.setBookPress("��ݽṹ");
-			testBookBorrowedEntity.setBookPressTime("��ݽṹ");
+			testBookBorrowedEntity.setBookText("android");
+			testBookBorrowedEntity.setBookImageUrl("android");
+			testBookBorrowedEntity.setBookPress("android");
+			testBookBorrowedEntity.setBookPressTime("android");
 			BookBorrowedEntity testBookBorrowedEntity1 = new BookBorrowedEntity();
 			testBookBorrowedEntity1.setBookId("1");
-			testBookBorrowedEntity1.setBookText("��ݽṹ");
-			testBookBorrowedEntity1.setBookImageUrl("��ݽṹ");
-			testBookBorrowedEntity1.setBookPress("��ݽṹ");
-			testBookBorrowedEntity1.setBookPressTime("��ݽṹ");
+			testBookBorrowedEntity1.setBookText("android");
+			testBookBorrowedEntity1.setBookImageUrl("android");
+			testBookBorrowedEntity1.setBookPress("android");
+			testBookBorrowedEntity1.setBookPressTime("android");
 			borrowedBookDAO.insert(testBookBorrowedEntity);
 			borrowedBookDAO.insert(testBookBorrowedEntity1);
-			//����Ĵ������������
 			ArrayList<BookBorrowedEntity> books = null;
 			books = borrowedBookDAO.query(null, null ,null,null);
 			BookBorrowedAdapter bookAdapter = new BookBorrowedAdapter(BookBorrowedActivity.this); 
@@ -123,7 +123,8 @@ public class BookBorrowedActivity extends BaseActivity{
 		@Override
 		public void onItemClick(AdapterView<?> adapterView, View view, int position,
 				long time) {
-			//���������Ϣҳ
+			Intent   book_info_intent = new Intent(BookBorrowedActivity.this, BookInfoActivity.class);
+			startActivity(book_info_intent);
 		}
 
 	};

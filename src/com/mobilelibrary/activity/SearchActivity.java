@@ -3,6 +3,7 @@ package com.mobilelibrary.activity;
 import org.json.JSONException;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -48,9 +49,6 @@ public class SearchActivity extends BaseActivity{
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.favorite);
-//		setContentView(R.layout.book_recommend_item);
-
-		
 		setTopTitle(this,R.string.book_search);
 		
 		mGallery = (Gallery)findViewById(R.id.Gallery);
@@ -59,22 +57,17 @@ public class SearchActivity extends BaseActivity{
 		mViewFlipper = (ViewFlipper)findViewById(R.id.ViewFlipper);
 		
 		mSearchEditText = (EditText)findViewById(R.id.et_search_key);
-		//������ť
 		mSearchButton = (Button)findViewById(R.id.btn_do_search);
-		//����������ť�ļ�����
 		mSearchButton.setOnClickListener(mSearchButtonListener);
 		
-		//ִ�еõ��Ƽ�������߳�
 		new NewsTaskGetBookRecommend().execute((Void)null);
 		
 		
 		mSearchFlipper =(ViewFlipper)findViewById(R.id.SearchViewFlipper);
 		
-		//��ʾ��Ŀ��listView
 		mSearchListView = (ListView)findViewById(R.id.SearchListView);
 		
 		
-		//���ǰlistview��Ϊ�գ�����ʾ��ʾ����
 		if(mSearchListView.getCount()==0){
 			mSearchFlipper.setDisplayedChild(2);
 		}
@@ -100,7 +93,7 @@ public class SearchActivity extends BaseActivity{
 	}
 	
 	
-	//Gallery���첽�߳�
+	//Gallery
 	private class NewsTaskGetBookRecommend extends AsyncTask<Void, WSError, BookRecommendEntity[]> {
 
 		@Override
@@ -162,14 +155,12 @@ public class SearchActivity extends BaseActivity{
 
 	}
 	
-	//Gallery�ļ�����
 	private OnItemClickListener mGalleryListener = new OnItemClickListener(){
 
 		@Override
 		public void onItemClick(AdapterView<?> adapterView, View view, int position,
 				long id) {
 			BookRecommendEntity book = (BookRecommendEntity) adapterView.getItemAtPosition(position);
-			//��������ͼ��Ľ��棬��Ҫ����
 		}
 		
 	};
@@ -187,7 +178,6 @@ public class SearchActivity extends BaseActivity{
 		@Override
 		public Integer doInBackground(Void... params) {
 			
-			//��̨������
 			bookSearch();
 			return 1;
 		}
@@ -208,10 +198,8 @@ public class SearchActivity extends BaseActivity{
 
 		private void bookSearch(){
 			
-			//�ٴν���JSON�ķ���
 			MobilelibraryResourceFromJSONRequest  server = new MobilelibraryResourceFromJSONRequest();
 			
-			//�õ�����
 			String query = mSearchEditText.getText().toString();
 			BookSearchEntity[] books = null;
 			try {
@@ -237,7 +225,6 @@ public class SearchActivity extends BaseActivity{
 	
 	
 	
-	//������ť�ļ�����
 	private OnClickListener mSearchButtonListener = new OnClickListener(){
 
 		@Override
@@ -249,13 +236,14 @@ public class SearchActivity extends BaseActivity{
 
 	};
 	
-	//��ĿlistView��ÿһ��Ŀ�ļ�����
+	
 	private OnItemClickListener mBookClickListener = new OnItemClickListener(){
 
 		@Override
 		public void onItemClick(AdapterView<?> adapterView, View view, int position,
 				long time) {
-			//���������Ϣҳ
+			Intent   book_info_intent = new Intent(SearchActivity.this, BookInfoActivity.class);
+			startActivity(book_info_intent);
 		}
 
 	};

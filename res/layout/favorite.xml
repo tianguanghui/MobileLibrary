@@ -7,6 +7,15 @@
 
     <include layout="@layout/common_topbar" />
 
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="2dp"
+        android:background="@color/bg_color"
+        android:text="@string/recommand_book"
+        android:textColor="@android:color/black"
+        android:textSize="14sp" />
+
     <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent"
@@ -68,12 +77,12 @@
                 </com.mobilelibrary.view.FailureBar>
             </LinearLayout>
         </ViewFlipper>
-        
+
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_marginTop="5dp"
+            android:gravity="center"
             android:orientation="horizontal" >
 
             <EditText
@@ -83,20 +92,20 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="7dip"
                 android:layout_weight="1"
-                android:textSize="14sp"
-                android:hint="@string/search_book_key_hint"
                 android:background="@drawable/inputbox2"
+                android:hint="@string/search_book_key_hint"
                 android:paddingLeft="7dp"
-                android:singleLine="true" />
+                android:singleLine="true"
+                android:textSize="14sp" />
 
             <Button
                 android:id="@+id/btn_do_search"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dip"
-                android:textColor="@android:color/white"
                 android:background="@drawable/month_btn_selector"
-                android:text="@string/search" >
+                android:text="@string/search"
+                android:textColor="@android:color/white" >
             </Button>
         </LinearLayout>
 

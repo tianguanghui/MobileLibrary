@@ -53,11 +53,30 @@ public class BookSearchAdapter extends ArrayListAdapter<BookSearchEntity> {
 		holder.bookImage.setTag(imageUrl);
 		
 		Resources res = mContext.getResources();
-		Bitmap bmp=BitmapFactory.decodeResource(res, R.drawable.book_recommend_default);
 		
-		//Ä¬ÈÏÍ¼Æ¬
-		ImageManager.INSTANCE.setPlaceholder(bmp);
-		ImageManager.INSTANCE.loadBitmap(imageUrl, holder.bookImage);  
+		if (position == 0) {
+			Bitmap bmp=BitmapFactory.decodeResource(res, R.drawable.book_recommend_default);
+			holder.bookImage.setImageBitmap(bmp);
+		}
+		if (position == 1) {
+			Bitmap bmp=BitmapFactory.decodeResource(res, R.drawable.book2);
+			holder.bookImage.setImageBitmap(bmp);
+		}
+		if (position == 2) {
+			Bitmap bmp=BitmapFactory.decodeResource(res, R.drawable.book3);
+			holder.bookImage.setImageBitmap(bmp);
+		}
+		if (position == 3) {
+			Bitmap bmp=BitmapFactory.decodeResource(res, R.drawable.book4);
+			holder.bookImage.setImageBitmap(bmp);
+		}
+		if (position == 4) {
+			Bitmap bmp=BitmapFactory.decodeResource(res, R.drawable.book5);
+			holder.bookImage.setImageBitmap(bmp);
+		}
+//
+//		ImageManager.INSTANCE.setPlaceholder(bmp);
+//		ImageManager.INSTANCE.loadBitmap(imageUrl, holder.bookImage);  
 
 		return row;
 		

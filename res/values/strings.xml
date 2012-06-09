@@ -39,7 +39,7 @@
     <!-- 个人信息 -->
     <string name="mainpage_personal_information">个人信息</string>
     
-
+	<string name="recommand_book">推荐书籍</string>
     
     <!-- 已借书目 -->
     <string name="mainpage_borrowed_books">已借书目</string>
@@ -84,6 +84,7 @@
     
     <!-- 个人信息-->
     <string name="person_name">姓名:</string>
+    <string name="sex">性别:</string>
     
     <string name="person_id">学号:</string>
     
@@ -116,6 +117,21 @@
     <string name="input_password">请输入密码</string>
     <string name="user_pwd_not_empty">用户名或密码不能为空</string>
     <string name="login_success">登陆成功</string>
+    
+    
+   	<!-- book info--> 
+    <string name="book_info_book_status_normal">已借</string>
+    
+   <string name="book_info">书目信息</string>
+   
+   <string name="storesuccess">收藏成功</string>
+   
+   
+   
+    
+    
+    
+    
     
     
     

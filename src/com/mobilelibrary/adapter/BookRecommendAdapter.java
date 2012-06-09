@@ -1,9 +1,5 @@
 package com.mobilelibrary.adapter;
 
-import com.mobilelibrary.R;
-import com.mobilelibrary.common.ImageManager;
-import com.mobilelibrary.entity.BookRecommendEntity;
-
 import android.app.Activity;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -14,8 +10,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.mobilelibrary.R;
+import com.mobilelibrary.entity.BookRecommendEntity;
+
 /*
- * ÐÂÊéÍÆ¼öÏÔÊ¾µÄÊÊÅäÆ÷
+ * ï¿½ï¿½ï¿½ï¿½ï¿½Æ¼ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
  */
 
 public class BookRecommendAdapter extends ArrayListAdapter<BookRecommendEntity>{
@@ -55,11 +54,29 @@ public class BookRecommendAdapter extends ArrayListAdapter<BookRecommendEntity>{
 		holder.bookImage.setTag(imageUrl);
 		
 		Resources res = mContext.getResources();
-		Bitmap bmp=BitmapFactory.decodeResource(res, R.drawable.book_recommend_default);
-		
-		//Ä¬ÈÏÍ¼Æ¬
-		ImageManager.INSTANCE.setPlaceholder(bmp);
-		ImageManager.INSTANCE.loadBitmap(imageUrl, holder.bookImage);  
+		if (position == 0) {
+			Bitmap bmp=BitmapFactory.decodeResource(res, R.drawable.book_recommend_default);
+			holder.bookImage.setImageBitmap(bmp);
+		}
+		if (position == 1) {
+			Bitmap bmp=BitmapFactory.decodeResource(res, R.drawable.book2);
+			holder.bookImage.setImageBitmap(bmp);
+		}
+		if (position == 2) {
+			Bitmap bmp=BitmapFactory.decodeResource(res, R.drawable.book6);
+			holder.bookImage.setImageBitmap(bmp);
+		}
+		if (position == 3) {
+			Bitmap bmp=BitmapFactory.decodeResource(res, R.drawable.book5);
+			holder.bookImage.setImageBitmap(bmp);
+		}
+		if (position == 4) {
+			Bitmap bmp=BitmapFactory.decodeResource(res, R.drawable.book4);
+			holder.bookImage.setImageBitmap(bmp);
+		}
+//		//Ä¬ï¿½ï¿½Í¼Æ¬
+//		ImageManager.INSTANCE.setPlaceholder(bmp);
+//		ImageManager.INSTANCE.loadBitmap(imageUrl, holder.bookImage);  
 
 		return row;
 		

@@ -43,6 +43,7 @@ public class PersonInformationAdapter extends BaseAdapter {
 			holder = new ViewHolder();
 			holder.imageView = (ImageView) convertView.findViewById(R.id.item_img);
 			holder.textView = (TextView) convertView.findViewById(R.id.item_content);
+			holder.contentTextView = (TextView) convertView.findViewById(R.id.item_text);
 			
 			convertView.setTag(holder);
 		}else {
@@ -52,14 +53,17 @@ public class PersonInformationAdapter extends BaseAdapter {
 		if (position == 0) {
 			holder.imageView.setImageResource(R.drawable.modi_pwd);
 			holder.textView.setText(context.getResources().getString(R.string.person_id));
+			holder.contentTextView.setText("GS1121000");
 			convertView.setBackgroundResource(R.drawable.listview_top_bg);
 		}else if (position == 1) {
 			holder.imageView.setImageResource(R.drawable.about);
 			holder.textView.setText(context.getResources().getString(R.string.person_academy));
+			holder.contentTextView.setText("软件学院");
 			convertView.setBackgroundResource(R.drawable.listview_middle_bg);
 		}else if (position == 2) {
 			holder.imageView.setImageResource(R.drawable.feedback);
 			holder.textView.setText(context.getResources().getString(R.string.person_class));
+			holder.contentTextView.setText("移动云计算A5");
 			convertView.setBackgroundResource(R.drawable.listview_bottom_bg);
 		}
 		
@@ -69,6 +73,7 @@ public class PersonInformationAdapter extends BaseAdapter {
 	private class ViewHolder{
 		private ImageView imageView;
 		private TextView textView;
+		private TextView contentTextView;
 	}
 
 }
