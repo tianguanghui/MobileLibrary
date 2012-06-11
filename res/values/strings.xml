@@ -10,6 +10,7 @@
     <string name="collect">收藏</string>
     <string name="other">其他</string>
     <string name="back">返回</string>
+    <string name="quit_info">确认退出软件吗？</string>
     <string name="my_library">我的图书馆</string>
     <string name="book_search">书目查询</string>
     <string name="set_password">修改密码</string>
@@ -125,6 +126,8 @@
    <string name="book_info">书目信息</string>
    
    <string name="storesuccess">收藏成功</string>
+   
+   <string name="share_content">我正在使用移动图书馆阅读《Android入门与提高》,一起来看看吧!</string>
    
    
    

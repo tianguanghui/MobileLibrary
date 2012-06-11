@@ -1,5 +1,7 @@
 package com.mobilelibrary.activity;
 
+import java.util.ArrayList;
+
 import org.json.JSONException;
 
 import android.app.Activity;
@@ -18,6 +20,11 @@ import android.widget.ListView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
 
+import com.iflytek.speech.RecognizerResult;
+import com.iflytek.speech.SpeechConfig.RATE;
+import com.iflytek.speech.SpeechError;
+import com.iflytek.ui.RecognizerDialog;
+import com.iflytek.ui.RecognizerDialogListener;
 import com.mobilelibrary.R;
 import com.mobilelibrary.adapter.BookRecommendAdapter;
 import com.mobilelibrary.adapter.BookSearchAdapter;
@@ -44,6 +51,7 @@ public class SearchActivity extends BaseActivity{
 	private Button mSearchButton;
 	private EditText mSearchEditText;
 	private BaseAdapter mAdapter;
+	private RecognizerDialog iatDialog;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -62,15 +70,18 @@ public class SearchActivity extends BaseActivity{
 		
 		new NewsTaskGetBookRecommend().execute((Void)null);
 		
-		
 		mSearchFlipper =(ViewFlipper)findViewById(R.id.SearchViewFlipper);
 		
 		mSearchListView = (ListView)findViewById(R.id.SearchListView);
 		
-		
 		if(mSearchListView.getCount()==0){
 			mSearchFlipper.setDisplayedChild(2);
 		}
+		
+		iatDialog = new RecognizerDialog(this, "appid=4fd2e2a7");
+		
+		iatDialog.setListener(recognizerDialogListener);
+
 	
 	}
 
@@ -229,9 +240,20 @@ public class SearchActivity extends BaseActivity{
 
 		@Override
 		public void onClick(View v) {
-			new NewTaskSearchingBook(SearchActivity.this,
-					R.string.wait_msg,
-					R.string.wait_msg).execute((Void)null);	
+			
+			String query = mSearchEditText.getText().toString();
+
+			
+			if(query.length()!=0){
+				new NewTaskSearchingBook(SearchActivity.this,
+				R.string.wait_msg,
+				R.string.wait_msg).execute((Void)null);	
+				
+			}else{
+				showIatDialog();
+			}
+
+		
 		}
 
 	};
@@ -247,6 +269,49 @@ public class SearchActivity extends BaseActivity{
 		}
 
 	};
+	
+	private RecognizerDialogListener recognizerDialogListener = new  RecognizerDialogListener(){
+		
+		@Override
+		public void onEnd(SpeechError arg0) {
+			// TODO Auto-generated method stub
+			
+		}
+	
+	
+
+		@Override
+		public void onResults(ArrayList<RecognizerResult> results, boolean arg1) {
+			// TODO Auto-generated method stub
+			StringBuilder builder = new StringBuilder();
+			for (RecognizerResult recognizerResult : results) {
+				builder.append(recognizerResult.text);
+			}
+			mSearchEditText.append(builder.subSequence(0, builder.length()-1));
+			mSearchEditText.setSelection(mSearchEditText.length());
+			
+		}
+		
+	};
+	
+	public void showIatDialog()
+	{
+	
+		iatDialog.setEngine("sms",null, null);
+
+
+	//	if(rate.equals("rate8k"))
+			iatDialog.setSampleRate(RATE.rate8k);
+//		else if(rate.equals("rate11k"))
+//			iatDialog.setSampleRate(RATE.rate11k);
+//		else if(rate.equals("rate16k"))
+//			iatDialog.setSampleRate(RATE.rate16k);
+//		else if(rate.equals("rate22k"))
+//			iatDialog.setSampleRate(RATE.rate22k);
+//		mResultText.setText(null);
+		
+		iatDialog.show();
+	}
 
 	
 }

@@ -47,9 +47,9 @@ public class LoginTask extends AsyncTask<UserEntity, Integer, UserEntity> {
 	protected void onPreExecute() {
 		super.onPreExecute();
 		if (isFirstLogin) {
-			message = "wait..";
+			message = "请稍等..";
 		}else {
-			message = "wait..";
+			message = "请稍等..";
 		}
 		progressDialog = new ProgressDialog(context);
 		progressDialog.setMessage(message);
@@ -62,6 +62,12 @@ public class LoginTask extends AsyncTask<UserEntity, Integer, UserEntity> {
 		userName = params[0].getUserId();
 		password = params[0].getPassword();
 		
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		MobilelibraryResourceFromJSONRequest server = new MobilelibraryResourceFromJSONRequest();
 		
 		try {

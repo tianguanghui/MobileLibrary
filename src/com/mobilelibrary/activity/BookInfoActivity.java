@@ -11,16 +11,17 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.mobilelibrary.R;
-import com.mobilelibrary.adapter.PersonInformationAdapter;
 import com.mobilelibrary.dao.StoredBookDAO;
-import com.mobilelibrary.entity.BookBorrowedEntity;
 import com.mobilelibrary.entity.BookStoredEntity;
+import com.mobilelibrary.utils.ImageTools;
+import com.umeng.api.sns.UMSnsService;
 
 public class BookInfoActivity extends BaseActivity{
 	
     private ListView personInformationListView;
     private ImageButton btn_store;
     private ImageView bookImageView;
+    private ImageButton btn_shareButton;
     int bookBorrowedEntity;
 
 	@Override
@@ -39,6 +40,17 @@ public class BookInfoActivity extends BaseActivity{
 		});
         
         bookImageView = (ImageView) this.findViewById(R.id.viewBook_cover);
+        btn_shareButton = (ImageButton) this.findViewById(R.id.btn_status_bar_share_book);
+        btn_shareButton.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				byte[] pictures = ImageTools.drawableToBytes(getResources().getDrawable(R.drawable.ic_launcher));
+				UMSnsService.share(BookInfoActivity.this, pictures, getResources().getString(R.string.share_content), null);
+//				UMSnsService.share(BookInfoActivity.this, getResources().getString(R.string.share_content), null);
+			}
+		});
+        
         bookBorrowedEntity = (Integer)getIntent().getSerializableExtra("bookinfo");
         
         if (bookBorrowedEntity==1 ) {

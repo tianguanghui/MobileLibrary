@@ -70,7 +70,7 @@ public class LoginActivity extends BaseActivity  {
 			String userName = sp.getString(SPConstant.SP_USER_ID, "");
 			
 			if (userName.equals("")) {
-				userNameTextView.setText("无法获取");
+				userNameTextView.setText("test123");
 			}else{
 				userNameTextView.setText(userName);
 			}

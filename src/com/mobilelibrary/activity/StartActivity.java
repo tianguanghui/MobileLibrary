@@ -60,20 +60,6 @@ public class StartActivity extends Activity {
 
 			@Override
 			public void onAnimationEnd(Animation animation) {
-				boolean isNetWorkAvaliable = SystemUtils.checkNetwork(StartActivity.this);
-				if (!isNetWorkAvaliable) {
-					AlertDialog.Builder builder = new AlertDialog.Builder(StartActivity.this);
-					builder.setTitle("缃戠粶閿欒");
-					builder.setMessage("缃戠粶寮傚父锛岃妫�煡缃戠粶杩炴帴");
-					builder.setPositiveButton("纭", new OnClickListener() {
-						@Override
-						public void onClick(DialogInterface dialog, int which) {
-							// TODO Auto-generated method stub
-							android.os.Process.killProcess(android.os.Process.myPid());
-						}
-					});
-					builder.create().show();
-				}else {
 					boolean isFirstLogin = sharedPreferences.getBoolean(SPConstant.SP_FIRST_LOGIN, true);
 					
 					String password = sharedPreferences.getString(SPConstant.SP_PASSWORD, "");
@@ -97,7 +83,6 @@ public class StartActivity extends Activity {
 						}
 					}
 				}
-			}
 		});
 	}
 }

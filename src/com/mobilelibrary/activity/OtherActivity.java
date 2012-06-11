@@ -1,6 +1,8 @@
 package com.mobilelibrary.activity;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -16,6 +18,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.mobilelibrary.R;
+import com.umeng.fb.UMFeedbackService;
 /**
  * other information
  * @author Ryan
@@ -43,7 +46,18 @@ public class OtherActivity extends BaseActivity implements OnItemClickListener{
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				
+				AlertDialog.Builder builder = new AlertDialog.Builder(OtherActivity.this);
+				builder.setTitle(R.string.quit);
+				builder.setMessage(R.string.quit_info);
+				builder.setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener() {
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						OtherActivity.this.finish();
+						startActivity(new Intent(OtherActivity.this,LoginActivity.class));
+					}
+				});
+				builder.setNegativeButton(R.string.cancel, null);
+				builder.create().show();
 			}
 		});
 		
@@ -67,8 +81,8 @@ public class OtherActivity extends BaseActivity implements OnItemClickListener{
 			break;
 			
 		case FEEDBACK:
-//			UMFeedbackService.setGoBackButtonVisible();
-//			UMFeedbackService.openUmengFeedbackSDK(OtherActivity.this);
+			UMFeedbackService.setGoBackButtonVisible();
+			UMFeedbackService.openUmengFeedbackSDK(OtherActivity.this);
 			break;
 
 		default:

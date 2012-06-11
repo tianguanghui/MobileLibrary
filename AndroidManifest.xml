@@ -7,6 +7,7 @@
     <uses-sdk android:minSdkVersion="8" />
     
     <!-- Config permission here -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -59,7 +60,33 @@
        	<activity android:name=".activity.BookInfoActivity" />
         
         
+         <!-- Umeng Support -->
+        <activity
+            android:name="com.umeng.fb.ui.SendFeedback"
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name="com.umeng.fb.ui.FeedbackConversations" />
+        <activity
+            android:name="com.umeng.fb.ui.FeedbackConversation"
+            android:configChanges="keyboard" />
+        <!-- UmengSNS -->
+        <activity
+            android:name="com.umeng.api.activity.OauthActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="unspecified"
+            android:windowSoftInputMode="adjustResize" >
+        </activity>
+        <activity
+            android:name="com.umeng.api.activity.UpdateStatusActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="unspecified"
+            android:theme="@style/Theme.IOSched"
+            android:windowSoftInputMode="stateVisible|adjustResize" >
+        </activity>
         
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="4fcc1d9952701576640000e9" >
+        </meta-data>
         
         <!-- Config service here -->
         
