@@ -13,6 +13,7 @@ import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.ViewFlipper;
 
+import com.mobclick.android.MobclickAgent;
 import com.mobilelibrary.R;
 import com.mobilelibrary.adapter.BookBorrowedAdapter;
 import com.mobilelibrary.adapter.BookBorrowedRecordAdapter;
@@ -143,4 +144,16 @@ private void bookSearch(){
 
 	};
 
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		MobclickAgent.onPause(this);
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		MobclickAgent.onResume(this);
+	}
 }

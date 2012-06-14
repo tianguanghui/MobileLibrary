@@ -5,6 +5,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ListView;
 
+import com.mobclick.android.MobclickAgent;
 import com.mobilelibrary.R;
 import com.mobilelibrary.adapter.PersonInformationAdapter;
 
@@ -30,4 +31,16 @@ public class PersonInformation  extends BaseActivity{
 		personInformationListView.setAdapter(new PersonInformationAdapter(this));
     }
 
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		MobclickAgent.onPause(this);
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		MobclickAgent.onResume(this);
+	}
 }

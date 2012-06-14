@@ -25,6 +25,7 @@ import com.iflytek.speech.SpeechConfig.RATE;
 import com.iflytek.speech.SpeechError;
 import com.iflytek.ui.RecognizerDialog;
 import com.iflytek.ui.RecognizerDialogListener;
+import com.mobclick.android.MobclickAgent;
 import com.mobilelibrary.R;
 import com.mobilelibrary.adapter.BookRecommendAdapter;
 import com.mobilelibrary.adapter.BookSearchAdapter;
@@ -95,6 +96,7 @@ public class SearchActivity extends BaseActivity{
 	protected void onPause() {
 		// TODO Auto-generated method stub
 		super.onPause();
+		MobclickAgent.onPause(this);
 	}
 
 	@Override
@@ -234,7 +236,13 @@ public class SearchActivity extends BaseActivity{
 		
 	}
 	
-	
+
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		MobclickAgent.onResume(this);
+	}
 	
 	private OnClickListener mSearchButtonListener = new OnClickListener(){
 

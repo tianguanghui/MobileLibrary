@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+
+import com.mobclick.android.MobclickAgent;
 import com.mobilelibrary.R;
 /**
  * my library 
@@ -58,10 +60,17 @@ public class MainPageActivity extends BaseActivity {
 		super.onDestroy();
 	}
 
+
 	@Override
 	protected void onPause() {
-		// TODO Auto-generated method stub
 		super.onPause();
+		MobclickAgent.onPause(this);
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		MobclickAgent.onResume(this);
 	}
 
 	@Override

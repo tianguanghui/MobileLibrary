@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 
+import com.mobclick.android.MobclickAgent;
 import com.mobilelibrary.R;
 import com.mobilelibrary.adapter.BooksAdapter;
 import com.mobilelibrary.view.ShelvesView;
@@ -40,7 +41,18 @@ public class BookShelfActivity extends BaseActivity {
 
         
     }
-    
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		MobclickAgent.onPause(this);
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		MobclickAgent.onResume(this);
+	}
     private AdapterView.OnItemClickListener mGridItemClickListener = new AdapterView.OnItemClickListener() {
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 			Intent   book_info_intent = new Intent(BookShelfActivity.this, BookInfoActivity.class);

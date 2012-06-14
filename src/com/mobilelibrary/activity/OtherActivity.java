@@ -17,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.mobclick.android.MobclickAgent;
 import com.mobilelibrary.R;
 import com.umeng.fb.UMFeedbackService;
 /**
@@ -65,6 +66,13 @@ public class OtherActivity extends BaseActivity implements OnItemClickListener{
 		otherListView.setOnItemClickListener(this);
 		otherListView.setAdapter(new OtherAdapter(this));
 		
+	}
+	
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		MobclickAgent.onResume(this);
 	}
 
 	@Override
@@ -164,6 +172,7 @@ public class OtherActivity extends BaseActivity implements OnItemClickListener{
 	protected void onPause() {
 		// TODO Auto-generated method stub
 		super.onPause();
+		MobclickAgent.onPause(this);
 	}
 
 	@Override

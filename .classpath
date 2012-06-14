@@ -9,5 +9,6 @@
 	<classpathentry kind="lib" path="libs/umeng_sdk.jar"/>
 	<classpathentry kind="lib" path="libs/Umeng-Android-SDK-SnsService_1.3.2.jar"/>
 	<classpathentry kind="lib" path="libs/Msc.jar"/>
+	<classpathentry kind="lib" path="libs/Analytics_Android_SDK_3.3.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

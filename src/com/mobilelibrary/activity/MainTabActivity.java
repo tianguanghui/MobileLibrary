@@ -9,6 +9,7 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.RadioButton;
 import android.widget.TabHost;
 
+import com.mobclick.android.MobclickAgent;
 import com.mobilelibrary.R;
 
 /**
@@ -45,6 +46,19 @@ public class MainTabActivity extends TabActivity implements
 		
 		setupTabHost();
 
+	}
+	
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		MobclickAgent.onPause(this);
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		MobclickAgent.onResume(this);
 	}
 	
 	private void setupTabHost(){

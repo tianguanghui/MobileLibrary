@@ -15,6 +15,7 @@ import android.view.animation.Animation.AnimationListener;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.mobclick.android.MobclickAgent;
 import com.mobilelibrary.R;
 import com.mobilelibrary.common.LoginTask;
 import com.mobilelibrary.common.SPConstant;
@@ -84,5 +85,19 @@ public class StartActivity extends Activity {
 					}
 				}
 		});
+		
+	}
+	
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		MobclickAgent.onPause(this);
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		MobclickAgent.onResume(this);
 	}
 }

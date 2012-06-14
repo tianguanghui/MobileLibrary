@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.mobclick.android.MobclickAgent;
 import com.mobilelibrary.R;
 import com.mobilelibrary.dao.StoredBookDAO;
 import com.mobilelibrary.entity.BookStoredEntity;
@@ -70,7 +71,18 @@ public class BookInfoActivity extends BaseActivity{
         btn_store.setOnClickListener(mStoreClickListener);
    
     }
-	
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		MobclickAgent.onPause(this);
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		MobclickAgent.onResume(this);
+	}
 	private OnClickListener mStoreClickListener = new OnClickListener() {
 		
 		@Override

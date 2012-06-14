@@ -18,6 +18,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.mobclick.android.MobclickAgent;
 import com.mobilelibrary.R;
 import com.mobilelibrary.common.LoginTask;
 import com.mobilelibrary.common.SPConstant;
@@ -80,7 +81,7 @@ public class LoginActivity extends BaseActivity  {
 	@Override
 	protected void onResume() {
 		super.onResume();
-		
+		MobclickAgent.onResume(this);
 		loginButton.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -134,6 +135,13 @@ public class LoginActivity extends BaseActivity  {
 		}
 		
 	};
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		MobclickAgent.onPause(this);
+	}
+	
 	
 
 }
